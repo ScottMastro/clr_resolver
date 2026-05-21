@@ -1,0 +1,32 @@
+# clr_resolve snakemake config.
+#
+# Paths are relative to the clr_resolve/ directory (run snakemake from there).
+
+# --- graph inputs ---
+# The pangenome graph GFA is too large to ship in the repo: obtain
+# muc-hprc-pggb-v.1.0.gfa and place it at data/ (or set graph_gfa to its
+# path). node_color.tsv and graph.bubbles.json are the orange painting and
+# bubble decomposition of that graph, vendored under data/.
+graph_gfa:  data/muc-hprc-pggb-v.1.0.gfa
+node_color: data/node_color.tsv
+bubbles:    data/graph.bubbles.json
+
+# --- production read sets ---
+# Pipeline A datasets: name -> path to a pre-filtered CLR FASTQ.
+# The `sim_` name prefix is reserved for benchmark-simulated datasets.
+datasets: {}
+
+# --- benchmark ---
+# Samples to benchmark (comma- or space-separated). Each enters pipeline A as
+# the dataset `sim_<sample>` and needs a matching sample_haps: entry.
+samples: ""
+
+# Per-sample diploid region assemblies the benchmark simulates reads from:
+# sample -> [haplotype-1 FASTA, haplotype-2 FASTA]. Example:
+#
+# samples: HG00133
+# sample_haps:
+#   HG00133:
+#     - /path/to/HG00133_hap1.fa
+#     - /path/to/HG00133_hap2.fa
+sample_haps: {}

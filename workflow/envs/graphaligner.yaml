@@ -1,0 +1,9 @@
+# Conda recreation recipe. clr_resolve resolves the GraphAligner binary via
+# config/tools.sh; this file is not consumed by --use-conda.
+#   conda env create -f workflow/envs/graphaligner.yaml
+name: graphaligner
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - graphaligner

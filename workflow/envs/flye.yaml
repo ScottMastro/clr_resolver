@@ -1,0 +1,9 @@
+# Conda recreation recipe. clr_resolve resolves the flye binary via
+# config/tools.sh; this file is not consumed by --use-conda.
+#   conda env create -f workflow/envs/flye.yaml
+name: flye
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - flye=2.9.6

@@ -1,0 +1,11 @@
+# Conda recreation recipe. cluster_copies runs cluster_whatshap.py with this
+# environment's python (it imports whatshap.polyphase); resolved via
+# config/tools.sh as WHATSHAP_PYTHON.
+#   conda env create -f workflow/envs/whatshap.yaml
+name: whatshap-env
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - python=3.10
+  - whatshap=2.8

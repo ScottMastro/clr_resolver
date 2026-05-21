@@ -1,0 +1,7 @@
+clr_resolve benchmark -- HG00133
+================================================
+
+(a) read phasing accuracy : 0.964  (275 reads scored)
+(b) copy count            : 6 resolved / 6 expected  [CORRECT]
+(c) bp accuracy           : 98.05% mean identity, 1.057 mean length ratio
+                            6/6 copies within expected length bounds

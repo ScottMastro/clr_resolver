@@ -1,0 +1,8 @@
+work/
+logs/
+.snakemake/
+__pycache__/
+*.pyc
+
+# the user-supplied pangenome graph (too large to commit)
+data/*.gfa

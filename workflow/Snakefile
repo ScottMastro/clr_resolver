@@ -1,0 +1,26 @@
+# clr_resolve: isolated ORANGE/MUC20 paralog-resolution pipeline.
+#
+# Entry point. Run from the clr_resolve/ directory:
+#   snakemake -s workflow/Snakefile --cores 8 resolve
+#   snakemake -s workflow/Snakefile --cores 8 benchmark
+#
+# `resolve`   separates orange paralog copies from a CLR read set and
+#             assembles each copy with Flye.
+# `benchmark` simulates CLR reads from known region assemblies, runs `resolve`
+#             on them, and scores the result against truth.
+#
+# work/ is a horizontal cache of intermediates (gitignored); results/ holds
+# the final per-dataset copies and per-sample benchmark summaries.
+
+configfile: "config/workflow.yaml"
+
+
+include: "rules/common.smk"
+include: "rules/resolve.smk"
+include: "rules/benchmark.smk"
+
+
+rule all:
+    input:
+        rules.resolve.input,
+        rules.benchmark.input,

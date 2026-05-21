@@ -1,0 +1,10 @@
+# Conda recreation recipe for the pbsim3 long-read simulator (benchmark only).
+# Resolved via config/tools.sh as PBSIM. The ERRHMM error models ship inside
+# the package; set PBSIM_MODEL in config/tools.sh to the ERRHMM-RSII.model path.
+#   conda env create -f workflow/envs/pbsim.yaml
+name: pbsim
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - pbsim3

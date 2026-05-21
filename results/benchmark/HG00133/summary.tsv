@@ -1,0 +1,2 @@
+sample	phasing_accuracy	reads_scored	copies_found	copies_expected	copy_count_correct	bp_identity_mean	bp_len_ratio_mean	bp_copies_ok
+HG00133	0.9636	275	6	6	1	98.05	1.057	6

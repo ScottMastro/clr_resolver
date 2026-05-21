@@ -1,0 +1,10 @@
+# Conda recreation recipe for the workflow engine itself. install.sh creates
+# this env; activate it (`conda activate snakemake`) before running the
+# pipeline.
+#   conda env create -f workflow/envs/snakemake.yaml
+name: snakemake
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - snakemake-minimal>=8
