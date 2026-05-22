@@ -21,12 +21,18 @@ Outputs match discover_markers.py exactly, so build_matrix.py is unchanged:
 """
 
 import argparse
+import gzip
 import json
 import re
 import sys
 from collections import defaultdict
 
 _STEP = re.compile(r"([<>])(\d+)")
+
+
+def open_text(path):
+    """Open a text file, transparently decompressing a .gz by extension."""
+    return gzip.open(path, "rt") if path.endswith(".gz") else open(path)
 _CIG = re.compile(r"(\d+)([=XIDM])")
 
 
@@ -115,7 +121,7 @@ def main():
 
     # best GAF alignment per read (longest block, col 11 / idx 10)
     best = {}
-    with open(args.gaf) as fh:
+    with open_text(args.gaf) as fh:
         for line in fh:
             f = line.rstrip("\n").split("\t")
             if len(f) < 12:

@@ -19,14 +19,1169 @@ datasets: {}
 # --- benchmark ---
 # Samples to benchmark (comma- or space-separated). Each enters pipeline A as
 # the dataset `sim_<sample>` and needs a matching sample_haps: entry.
-samples: ""
+samples:
+  - HG00097
+  - HG00099
+  - HG00126
+  - HG00128
+  - HG00133
+  - HG00140
+  - HG00146
+  - HG002
+  - HG00232
+  - HG00235
+  - HG00253
+  - HG00272
+  - HG00280
+  - HG00290
+  - HG00320
+  - HG00321
+  - HG00323
+  - HG00329
+  - HG00344
+  - HG00350
+  - HG00408
+  - HG00423
+  - HG00438
+  - HG005
+  - HG00544
+  - HG00558
+  - HG00597
+  - HG00609
+  - HG00621
+  - HG00639
+  - HG00642
+  - HG00658
+  - HG00673
+  - HG00706
+  - HG00733
+  - HG00735
+  - HG00738
+  - HG00741
+  - HG01071
+  - HG01074
+  - HG01081
+  - HG01099
+  - HG01106
+  - HG01109
+  - HG01123
+  - HG01150
+  - HG01167
+  - HG01175
+  - HG01192
+  - HG01243
+  - HG01252
+  - HG01255
+  - HG01258
+  - HG01261
+  - HG01346
+  - HG01358
+  - HG01361
+  - HG01433
+  - HG01496
+  - HG01530
+  - HG01784
+  - HG01786
+  - HG01884
+  - HG01891
+  - HG01928
+  - HG01934
+  - HG01940
+  - HG01943
+  - HG01952
+  - HG01960
+  - HG01969
+  - HG01975
+  - HG01978
+  - HG01981
+  - HG01993
+  - HG02004
+  - HG02015
+  - HG02027
+  - HG02040
+  - HG02055
+  - HG02056
+  - HG02071
+  - HG02074
+  - HG02080
+  - HG02083
+  - HG02109
+  - HG02129
+  - HG02132
+  - HG02135
+  - HG02145
+  - HG02148
+  - HG02155
+  - HG02165
+  - HG02178
+  - HG02257
+  - HG02258
+  - HG02273
+  - HG02280
+  - HG02293
+  - HG02300
+  - HG02391
+  - HG02392
+  - HG02451
+  - HG02486
+  - HG02514
+  - HG02523
+  - HG02559
+  - HG02572
+  - HG02583
+  - HG02602
+  - HG02615
+  - HG02622
+  - HG02630
+  - HG02647
+  - HG02668
+  - HG02698
+  - HG02717
+  - HG02723
+  - HG02735
+  - HG02738
+  - HG02809
+  - HG02818
+  - HG02841
+  - HG02886
+  - HG02922
+  - HG02965
+  - HG02984
+  - HG03017
+  - HG03041
+  - HG03050
+  - HG03098
+  - HG03130
+  - HG03139
+  - HG03195
+  - HG03209
+  - HG03225
+  - HG03239
+  - HG03270
+  - HG03369
+  - HG03453
+  - HG03471
+  - HG03486
+  - HG03516
+  - HG03521
+  - HG03540
+  - HG03579
+  - HG03583
+  - HG03654
+  - HG03669
+  - HG03688
+  - HG03704
+  - HG03710
+  - HG03742
+  - HG03784
+  - HG03804
+  - HG03816
+  - HG03831
+  - HG03834
+  - HG03874
+  - HG03927
+  - HG03942
+  - HG04115
+  - HG04157
+  - HG04160
+  - HG04184
+  - HG04187
+  - HG04199
+  - HG04204
+  - HG04228
+  - HG06807
+  - NA18505
+  - NA18508
+  - NA18522
+  - NA18565
+  - NA18570
+  - NA18608
+  - NA18620
+  - NA18747
+  - NA18879
+  - NA18906
+  - NA18940
+  - NA18943
+  - NA18944
+  - NA18945
+  - NA18948
+  - NA18952
+  - NA18959
+  - NA18960
+  - NA18967
+  - NA18970
+  - NA18971
+  - NA18974
+  - NA18976
+  - NA18982
+  - NA18983
+  - NA19036
+  - NA19043
+  - NA19087
+  - NA19159
+  - NA19185
+  - NA19240
+  - NA19338
+  - NA19391
+  - NA19443
+  - NA19468
+  - NA19682
+  - NA19700
+  - NA19776
+  - NA19835
+  - NA19909
+  - NA20129
+  - NA20282
+  - NA20346
+  - NA20503
+  - NA20752
+  - NA20762
+  - NA20799
+  - NA20805
+  - NA20806
+  - NA20809
+  - NA20827
+  - NA20850
+  - NA20870
+  - NA20905
+  - NA21093
+  - NA21102
+  - NA21106
+  - NA21110
+  - NA21144
+  - NA21309
 
 # Per-sample diploid region assemblies the benchmark simulates reads from:
-# sample -> [haplotype-1 FASTA, haplotype-2 FASTA]. Example:
+# sample -> [haplotype-1 FASTA, haplotype-2 FASTA].
 #
-# samples: HG00133
-# sample_haps:
-#   HG00133:
-#     - /path/to/HG00133_hap1.fa
-#     - /path/to/HG00133_hap2.fa
-sample_haps: {}
+# Every diploid haplotype path of the pangenome graph, extracted from the
+# graph FASTA into data/sim_haps/ (see /tmp/extract_all.py).
+sample_haps:
+  HG00097:
+    - data/sim_haps/HG00097_hap1.fa
+    - data/sim_haps/HG00097_hap2.fa
+  HG00099:
+    - data/sim_haps/HG00099_hap1.fa
+    - data/sim_haps/HG00099_hap2.fa
+  HG00126:
+    - data/sim_haps/HG00126_hap1.fa
+    - data/sim_haps/HG00126_hap2.fa
+  HG00128:
+    - data/sim_haps/HG00128_hap1.fa
+    - data/sim_haps/HG00128_hap2.fa
+  HG00133:
+    - data/sim_haps/HG00133_hap1.fa
+    - data/sim_haps/HG00133_hap2.fa
+  HG00140:
+    - data/sim_haps/HG00140_hap1.fa
+    - data/sim_haps/HG00140_hap2.fa
+  HG00146:
+    - data/sim_haps/HG00146_hap1.fa
+    - data/sim_haps/HG00146_hap2.fa
+  HG002:
+    - data/sim_haps/HG002_hap1.fa
+    - data/sim_haps/HG002_hap2.fa
+  HG00232:
+    - data/sim_haps/HG00232_hap1.fa
+    - data/sim_haps/HG00232_hap2.fa
+  HG00235:
+    - data/sim_haps/HG00235_hap1.fa
+    - data/sim_haps/HG00235_hap2.fa
+  HG00253:
+    - data/sim_haps/HG00253_hap1.fa
+    - data/sim_haps/HG00253_hap2.fa
+  HG00272:
+    - data/sim_haps/HG00272_hap1.fa
+    - data/sim_haps/HG00272_hap2.fa
+  HG00280:
+    - data/sim_haps/HG00280_hap1.fa
+    - data/sim_haps/HG00280_hap2.fa
+  HG00290:
+    - data/sim_haps/HG00290_hap1.fa
+    - data/sim_haps/HG00290_hap2.fa
+  HG00320:
+    - data/sim_haps/HG00320_hap1.fa
+    - data/sim_haps/HG00320_hap2.fa
+  HG00321:
+    - data/sim_haps/HG00321_hap1.fa
+    - data/sim_haps/HG00321_hap2.fa
+  HG00323:
+    - data/sim_haps/HG00323_hap1.fa
+    - data/sim_haps/HG00323_hap2.fa
+  HG00329:
+    - data/sim_haps/HG00329_hap1.fa
+    - data/sim_haps/HG00329_hap2.fa
+  HG00344:
+    - data/sim_haps/HG00344_hap1.fa
+    - data/sim_haps/HG00344_hap2.fa
+  HG00350:
+    - data/sim_haps/HG00350_hap1.fa
+    - data/sim_haps/HG00350_hap2.fa
+  HG00408:
+    - data/sim_haps/HG00408_hap1.fa
+    - data/sim_haps/HG00408_hap2.fa
+  HG00423:
+    - data/sim_haps/HG00423_hap1.fa
+    - data/sim_haps/HG00423_hap2.fa
+  HG00438:
+    - data/sim_haps/HG00438_hap1.fa
+    - data/sim_haps/HG00438_hap2.fa
+  HG005:
+    - data/sim_haps/HG005_hap1.fa
+    - data/sim_haps/HG005_hap2.fa
+  HG00544:
+    - data/sim_haps/HG00544_hap1.fa
+    - data/sim_haps/HG00544_hap2.fa
+  HG00558:
+    - data/sim_haps/HG00558_hap1.fa
+    - data/sim_haps/HG00558_hap2.fa
+  HG00597:
+    - data/sim_haps/HG00597_hap1.fa
+    - data/sim_haps/HG00597_hap2.fa
+  HG00609:
+    - data/sim_haps/HG00609_hap1.fa
+    - data/sim_haps/HG00609_hap2.fa
+  HG00621:
+    - data/sim_haps/HG00621_hap1.fa
+    - data/sim_haps/HG00621_hap2.fa
+  HG00639:
+    - data/sim_haps/HG00639_hap1.fa
+    - data/sim_haps/HG00639_hap2.fa
+  HG00642:
+    - data/sim_haps/HG00642_hap1.fa
+    - data/sim_haps/HG00642_hap2.fa
+  HG00658:
+    - data/sim_haps/HG00658_hap1.fa
+    - data/sim_haps/HG00658_hap2.fa
+  HG00673:
+    - data/sim_haps/HG00673_hap1.fa
+    - data/sim_haps/HG00673_hap2.fa
+  HG00706:
+    - data/sim_haps/HG00706_hap1.fa
+    - data/sim_haps/HG00706_hap2.fa
+  HG00733:
+    - data/sim_haps/HG00733_hap1.fa
+    - data/sim_haps/HG00733_hap2.fa
+  HG00735:
+    - data/sim_haps/HG00735_hap1.fa
+    - data/sim_haps/HG00735_hap2.fa
+  HG00738:
+    - data/sim_haps/HG00738_hap1.fa
+    - data/sim_haps/HG00738_hap2.fa
+  HG00741:
+    - data/sim_haps/HG00741_hap1.fa
+    - data/sim_haps/HG00741_hap2.fa
+  HG01071:
+    - data/sim_haps/HG01071_hap1.fa
+    - data/sim_haps/HG01071_hap2.fa
+  HG01074:
+    - data/sim_haps/HG01074_hap1.fa
+    - data/sim_haps/HG01074_hap2.fa
+  HG01081:
+    - data/sim_haps/HG01081_hap1.fa
+    - data/sim_haps/HG01081_hap2.fa
+  HG01099:
+    - data/sim_haps/HG01099_hap1.fa
+    - data/sim_haps/HG01099_hap2.fa
+  HG01106:
+    - data/sim_haps/HG01106_hap1.fa
+    - data/sim_haps/HG01106_hap2.fa
+  HG01109:
+    - data/sim_haps/HG01109_hap1.fa
+    - data/sim_haps/HG01109_hap2.fa
+  HG01123:
+    - data/sim_haps/HG01123_hap1.fa
+    - data/sim_haps/HG01123_hap2.fa
+  HG01150:
+    - data/sim_haps/HG01150_hap1.fa
+    - data/sim_haps/HG01150_hap2.fa
+  HG01167:
+    - data/sim_haps/HG01167_hap1.fa
+    - data/sim_haps/HG01167_hap2.fa
+  HG01175:
+    - data/sim_haps/HG01175_hap1.fa
+    - data/sim_haps/HG01175_hap2.fa
+  HG01192:
+    - data/sim_haps/HG01192_hap1.fa
+    - data/sim_haps/HG01192_hap2.fa
+  HG01243:
+    - data/sim_haps/HG01243_hap1.fa
+    - data/sim_haps/HG01243_hap2.fa
+  HG01252:
+    - data/sim_haps/HG01252_hap1.fa
+    - data/sim_haps/HG01252_hap2.fa
+  HG01255:
+    - data/sim_haps/HG01255_hap1.fa
+    - data/sim_haps/HG01255_hap2.fa
+  HG01258:
+    - data/sim_haps/HG01258_hap1.fa
+    - data/sim_haps/HG01258_hap2.fa
+  HG01261:
+    - data/sim_haps/HG01261_hap1.fa
+    - data/sim_haps/HG01261_hap2.fa
+  HG01346:
+    - data/sim_haps/HG01346_hap1.fa
+    - data/sim_haps/HG01346_hap2.fa
+  HG01358:
+    - data/sim_haps/HG01358_hap1.fa
+    - data/sim_haps/HG01358_hap2.fa
+  HG01361:
+    - data/sim_haps/HG01361_hap1.fa
+    - data/sim_haps/HG01361_hap2.fa
+  HG01433:
+    - data/sim_haps/HG01433_hap1.fa
+    - data/sim_haps/HG01433_hap2.fa
+  HG01496:
+    - data/sim_haps/HG01496_hap1.fa
+    - data/sim_haps/HG01496_hap2.fa
+  HG01530:
+    - data/sim_haps/HG01530_hap1.fa
+    - data/sim_haps/HG01530_hap2.fa
+  HG01784:
+    - data/sim_haps/HG01784_hap1.fa
+    - data/sim_haps/HG01784_hap2.fa
+  HG01786:
+    - data/sim_haps/HG01786_hap1.fa
+    - data/sim_haps/HG01786_hap2.fa
+  HG01884:
+    - data/sim_haps/HG01884_hap1.fa
+    - data/sim_haps/HG01884_hap2.fa
+  HG01891:
+    - data/sim_haps/HG01891_hap1.fa
+    - data/sim_haps/HG01891_hap2.fa
+  HG01928:
+    - data/sim_haps/HG01928_hap1.fa
+    - data/sim_haps/HG01928_hap2.fa
+  HG01934:
+    - data/sim_haps/HG01934_hap1.fa
+    - data/sim_haps/HG01934_hap2.fa
+  HG01940:
+    - data/sim_haps/HG01940_hap1.fa
+    - data/sim_haps/HG01940_hap2.fa
+  HG01943:
+    - data/sim_haps/HG01943_hap1.fa
+    - data/sim_haps/HG01943_hap2.fa
+  HG01952:
+    - data/sim_haps/HG01952_hap1.fa
+    - data/sim_haps/HG01952_hap2.fa
+  HG01960:
+    - data/sim_haps/HG01960_hap1.fa
+    - data/sim_haps/HG01960_hap2.fa
+  HG01969:
+    - data/sim_haps/HG01969_hap1.fa
+    - data/sim_haps/HG01969_hap2.fa
+  HG01975:
+    - data/sim_haps/HG01975_hap1.fa
+    - data/sim_haps/HG01975_hap2.fa
+  HG01978:
+    - data/sim_haps/HG01978_hap1.fa
+    - data/sim_haps/HG01978_hap2.fa
+  HG01981:
+    - data/sim_haps/HG01981_hap1.fa
+    - data/sim_haps/HG01981_hap2.fa
+  HG01993:
+    - data/sim_haps/HG01993_hap1.fa
+    - data/sim_haps/HG01993_hap2.fa
+  HG02004:
+    - data/sim_haps/HG02004_hap1.fa
+    - data/sim_haps/HG02004_hap2.fa
+  HG02015:
+    - data/sim_haps/HG02015_hap1.fa
+    - data/sim_haps/HG02015_hap2.fa
+  HG02027:
+    - data/sim_haps/HG02027_hap1.fa
+    - data/sim_haps/HG02027_hap2.fa
+  HG02040:
+    - data/sim_haps/HG02040_hap1.fa
+    - data/sim_haps/HG02040_hap2.fa
+  HG02055:
+    - data/sim_haps/HG02055_hap1.fa
+    - data/sim_haps/HG02055_hap2.fa
+  HG02056:
+    - data/sim_haps/HG02056_hap1.fa
+    - data/sim_haps/HG02056_hap2.fa
+  HG02071:
+    - data/sim_haps/HG02071_hap1.fa
+    - data/sim_haps/HG02071_hap2.fa
+  HG02074:
+    - data/sim_haps/HG02074_hap1.fa
+    - data/sim_haps/HG02074_hap2.fa
+  HG02080:
+    - data/sim_haps/HG02080_hap1.fa
+    - data/sim_haps/HG02080_hap2.fa
+  HG02083:
+    - data/sim_haps/HG02083_hap1.fa
+    - data/sim_haps/HG02083_hap2.fa
+  HG02109:
+    - data/sim_haps/HG02109_hap1.fa
+    - data/sim_haps/HG02109_hap2.fa
+  HG02129:
+    - data/sim_haps/HG02129_hap1.fa
+    - data/sim_haps/HG02129_hap2.fa
+  HG02132:
+    - data/sim_haps/HG02132_hap1.fa
+    - data/sim_haps/HG02132_hap2.fa
+  HG02135:
+    - data/sim_haps/HG02135_hap1.fa
+    - data/sim_haps/HG02135_hap2.fa
+  HG02145:
+    - data/sim_haps/HG02145_hap1.fa
+    - data/sim_haps/HG02145_hap2.fa
+  HG02148:
+    - data/sim_haps/HG02148_hap1.fa
+    - data/sim_haps/HG02148_hap2.fa
+  HG02155:
+    - data/sim_haps/HG02155_hap1.fa
+    - data/sim_haps/HG02155_hap2.fa
+  HG02165:
+    - data/sim_haps/HG02165_hap1.fa
+    - data/sim_haps/HG02165_hap2.fa
+  HG02178:
+    - data/sim_haps/HG02178_hap1.fa
+    - data/sim_haps/HG02178_hap2.fa
+  HG02257:
+    - data/sim_haps/HG02257_hap1.fa
+    - data/sim_haps/HG02257_hap2.fa
+  HG02258:
+    - data/sim_haps/HG02258_hap1.fa
+    - data/sim_haps/HG02258_hap2.fa
+  HG02273:
+    - data/sim_haps/HG02273_hap1.fa
+    - data/sim_haps/HG02273_hap2.fa
+  HG02280:
+    - data/sim_haps/HG02280_hap1.fa
+    - data/sim_haps/HG02280_hap2.fa
+  HG02293:
+    - data/sim_haps/HG02293_hap1.fa
+    - data/sim_haps/HG02293_hap2.fa
+  HG02300:
+    - data/sim_haps/HG02300_hap1.fa
+    - data/sim_haps/HG02300_hap2.fa
+  HG02391:
+    - data/sim_haps/HG02391_hap1.fa
+    - data/sim_haps/HG02391_hap2.fa
+  HG02392:
+    - data/sim_haps/HG02392_hap1.fa
+    - data/sim_haps/HG02392_hap2.fa
+  HG02451:
+    - data/sim_haps/HG02451_hap1.fa
+    - data/sim_haps/HG02451_hap2.fa
+  HG02486:
+    - data/sim_haps/HG02486_hap1.fa
+    - data/sim_haps/HG02486_hap2.fa
+  HG02514:
+    - data/sim_haps/HG02514_hap1.fa
+    - data/sim_haps/HG02514_hap2.fa
+  HG02523:
+    - data/sim_haps/HG02523_hap1.fa
+    - data/sim_haps/HG02523_hap2.fa
+  HG02559:
+    - data/sim_haps/HG02559_hap1.fa
+    - data/sim_haps/HG02559_hap2.fa
+  HG02572:
+    - data/sim_haps/HG02572_hap1.fa
+    - data/sim_haps/HG02572_hap2.fa
+  HG02583:
+    - data/sim_haps/HG02583_hap1.fa
+    - data/sim_haps/HG02583_hap2.fa
+  HG02602:
+    - data/sim_haps/HG02602_hap1.fa
+    - data/sim_haps/HG02602_hap2.fa
+  HG02615:
+    - data/sim_haps/HG02615_hap1.fa
+    - data/sim_haps/HG02615_hap2.fa
+  HG02622:
+    - data/sim_haps/HG02622_hap1.fa
+    - data/sim_haps/HG02622_hap2.fa
+  HG02630:
+    - data/sim_haps/HG02630_hap1.fa
+    - data/sim_haps/HG02630_hap2.fa
+  HG02647:
+    - data/sim_haps/HG02647_hap1.fa
+    - data/sim_haps/HG02647_hap2.fa
+  HG02668:
+    - data/sim_haps/HG02668_hap1.fa
+    - data/sim_haps/HG02668_hap2.fa
+  HG02698:
+    - data/sim_haps/HG02698_hap1.fa
+    - data/sim_haps/HG02698_hap2.fa
+  HG02717:
+    - data/sim_haps/HG02717_hap1.fa
+    - data/sim_haps/HG02717_hap2.fa
+  HG02723:
+    - data/sim_haps/HG02723_hap1.fa
+    - data/sim_haps/HG02723_hap2.fa
+  HG02735:
+    - data/sim_haps/HG02735_hap1.fa
+    - data/sim_haps/HG02735_hap2.fa
+  HG02738:
+    - data/sim_haps/HG02738_hap1.fa
+    - data/sim_haps/HG02738_hap2.fa
+  HG02809:
+    - data/sim_haps/HG02809_hap1.fa
+    - data/sim_haps/HG02809_hap2.fa
+  HG02818:
+    - data/sim_haps/HG02818_hap1.fa
+    - data/sim_haps/HG02818_hap2.fa
+  HG02841:
+    - data/sim_haps/HG02841_hap1.fa
+    - data/sim_haps/HG02841_hap2.fa
+  HG02886:
+    - data/sim_haps/HG02886_hap1.fa
+    - data/sim_haps/HG02886_hap2.fa
+  HG02922:
+    - data/sim_haps/HG02922_hap1.fa
+    - data/sim_haps/HG02922_hap2.fa
+  HG02965:
+    - data/sim_haps/HG02965_hap1.fa
+    - data/sim_haps/HG02965_hap2.fa
+  HG02984:
+    - data/sim_haps/HG02984_hap1.fa
+    - data/sim_haps/HG02984_hap2.fa
+  HG03017:
+    - data/sim_haps/HG03017_hap1.fa
+    - data/sim_haps/HG03017_hap2.fa
+  HG03041:
+    - data/sim_haps/HG03041_hap1.fa
+    - data/sim_haps/HG03041_hap2.fa
+  HG03050:
+    - data/sim_haps/HG03050_hap1.fa
+    - data/sim_haps/HG03050_hap2.fa
+  HG03098:
+    - data/sim_haps/HG03098_hap1.fa
+    - data/sim_haps/HG03098_hap2.fa
+  HG03130:
+    - data/sim_haps/HG03130_hap1.fa
+    - data/sim_haps/HG03130_hap2.fa
+  HG03139:
+    - data/sim_haps/HG03139_hap1.fa
+    - data/sim_haps/HG03139_hap2.fa
+  HG03195:
+    - data/sim_haps/HG03195_hap1.fa
+    - data/sim_haps/HG03195_hap2.fa
+  HG03209:
+    - data/sim_haps/HG03209_hap1.fa
+    - data/sim_haps/HG03209_hap2.fa
+  HG03225:
+    - data/sim_haps/HG03225_hap1.fa
+    - data/sim_haps/HG03225_hap2.fa
+  HG03239:
+    - data/sim_haps/HG03239_hap1.fa
+    - data/sim_haps/HG03239_hap2.fa
+  HG03270:
+    - data/sim_haps/HG03270_hap1.fa
+    - data/sim_haps/HG03270_hap2.fa
+  HG03369:
+    - data/sim_haps/HG03369_hap1.fa
+    - data/sim_haps/HG03369_hap2.fa
+  HG03453:
+    - data/sim_haps/HG03453_hap1.fa
+    - data/sim_haps/HG03453_hap2.fa
+  HG03471:
+    - data/sim_haps/HG03471_hap1.fa
+    - data/sim_haps/HG03471_hap2.fa
+  HG03486:
+    - data/sim_haps/HG03486_hap1.fa
+    - data/sim_haps/HG03486_hap2.fa
+  HG03516:
+    - data/sim_haps/HG03516_hap1.fa
+    - data/sim_haps/HG03516_hap2.fa
+  HG03521:
+    - data/sim_haps/HG03521_hap1.fa
+    - data/sim_haps/HG03521_hap2.fa
+  HG03540:
+    - data/sim_haps/HG03540_hap1.fa
+    - data/sim_haps/HG03540_hap2.fa
+  HG03579:
+    - data/sim_haps/HG03579_hap1.fa
+    - data/sim_haps/HG03579_hap2.fa
+  HG03583:
+    - data/sim_haps/HG03583_hap1.fa
+    - data/sim_haps/HG03583_hap2.fa
+  HG03654:
+    - data/sim_haps/HG03654_hap1.fa
+    - data/sim_haps/HG03654_hap2.fa
+  HG03669:
+    - data/sim_haps/HG03669_hap1.fa
+    - data/sim_haps/HG03669_hap2.fa
+  HG03688:
+    - data/sim_haps/HG03688_hap1.fa
+    - data/sim_haps/HG03688_hap2.fa
+  HG03704:
+    - data/sim_haps/HG03704_hap1.fa
+    - data/sim_haps/HG03704_hap2.fa
+  HG03710:
+    - data/sim_haps/HG03710_hap1.fa
+    - data/sim_haps/HG03710_hap2.fa
+  HG03742:
+    - data/sim_haps/HG03742_hap1.fa
+    - data/sim_haps/HG03742_hap2.fa
+  HG03784:
+    - data/sim_haps/HG03784_hap1.fa
+    - data/sim_haps/HG03784_hap2.fa
+  HG03804:
+    - data/sim_haps/HG03804_hap1.fa
+    - data/sim_haps/HG03804_hap2.fa
+  HG03816:
+    - data/sim_haps/HG03816_hap1.fa
+    - data/sim_haps/HG03816_hap2.fa
+  HG03831:
+    - data/sim_haps/HG03831_hap1.fa
+    - data/sim_haps/HG03831_hap2.fa
+  HG03834:
+    - data/sim_haps/HG03834_hap1.fa
+    - data/sim_haps/HG03834_hap2.fa
+  HG03874:
+    - data/sim_haps/HG03874_hap1.fa
+    - data/sim_haps/HG03874_hap2.fa
+  HG03927:
+    - data/sim_haps/HG03927_hap1.fa
+    - data/sim_haps/HG03927_hap2.fa
+  HG03942:
+    - data/sim_haps/HG03942_hap1.fa
+    - data/sim_haps/HG03942_hap2.fa
+  HG04115:
+    - data/sim_haps/HG04115_hap1.fa
+    - data/sim_haps/HG04115_hap2.fa
+  HG04157:
+    - data/sim_haps/HG04157_hap1.fa
+    - data/sim_haps/HG04157_hap2.fa
+  HG04160:
+    - data/sim_haps/HG04160_hap1.fa
+    - data/sim_haps/HG04160_hap2.fa
+  HG04184:
+    - data/sim_haps/HG04184_hap1.fa
+    - data/sim_haps/HG04184_hap2.fa
+  HG04187:
+    - data/sim_haps/HG04187_hap1.fa
+    - data/sim_haps/HG04187_hap2.fa
+  HG04199:
+    - data/sim_haps/HG04199_hap1.fa
+    - data/sim_haps/HG04199_hap2.fa
+  HG04204:
+    - data/sim_haps/HG04204_hap1.fa
+    - data/sim_haps/HG04204_hap2.fa
+  HG04228:
+    - data/sim_haps/HG04228_hap1.fa
+    - data/sim_haps/HG04228_hap2.fa
+  HG06807:
+    - data/sim_haps/HG06807_hap1.fa
+    - data/sim_haps/HG06807_hap2.fa
+  NA18505:
+    - data/sim_haps/NA18505_hap1.fa
+    - data/sim_haps/NA18505_hap2.fa
+  NA18508:
+    - data/sim_haps/NA18508_hap1.fa
+    - data/sim_haps/NA18508_hap2.fa
+  NA18522:
+    - data/sim_haps/NA18522_hap1.fa
+    - data/sim_haps/NA18522_hap2.fa
+  NA18565:
+    - data/sim_haps/NA18565_hap1.fa
+    - data/sim_haps/NA18565_hap2.fa
+  NA18570:
+    - data/sim_haps/NA18570_hap1.fa
+    - data/sim_haps/NA18570_hap2.fa
+  NA18608:
+    - data/sim_haps/NA18608_hap1.fa
+    - data/sim_haps/NA18608_hap2.fa
+  NA18620:
+    - data/sim_haps/NA18620_hap1.fa
+    - data/sim_haps/NA18620_hap2.fa
+  NA18747:
+    - data/sim_haps/NA18747_hap1.fa
+    - data/sim_haps/NA18747_hap2.fa
+  NA18879:
+    - data/sim_haps/NA18879_hap1.fa
+    - data/sim_haps/NA18879_hap2.fa
+  NA18906:
+    - data/sim_haps/NA18906_hap1.fa
+    - data/sim_haps/NA18906_hap2.fa
+  NA18940:
+    - data/sim_haps/NA18940_hap1.fa
+    - data/sim_haps/NA18940_hap2.fa
+  NA18943:
+    - data/sim_haps/NA18943_hap1.fa
+    - data/sim_haps/NA18943_hap2.fa
+  NA18944:
+    - data/sim_haps/NA18944_hap1.fa
+    - data/sim_haps/NA18944_hap2.fa
+  NA18945:
+    - data/sim_haps/NA18945_hap1.fa
+    - data/sim_haps/NA18945_hap2.fa
+  NA18948:
+    - data/sim_haps/NA18948_hap1.fa
+    - data/sim_haps/NA18948_hap2.fa
+  NA18952:
+    - data/sim_haps/NA18952_hap1.fa
+    - data/sim_haps/NA18952_hap2.fa
+  NA18959:
+    - data/sim_haps/NA18959_hap1.fa
+    - data/sim_haps/NA18959_hap2.fa
+  NA18960:
+    - data/sim_haps/NA18960_hap1.fa
+    - data/sim_haps/NA18960_hap2.fa
+  NA18967:
+    - data/sim_haps/NA18967_hap1.fa
+    - data/sim_haps/NA18967_hap2.fa
+  NA18970:
+    - data/sim_haps/NA18970_hap1.fa
+    - data/sim_haps/NA18970_hap2.fa
+  NA18971:
+    - data/sim_haps/NA18971_hap1.fa
+    - data/sim_haps/NA18971_hap2.fa
+  NA18974:
+    - data/sim_haps/NA18974_hap1.fa
+    - data/sim_haps/NA18974_hap2.fa
+  NA18976:
+    - data/sim_haps/NA18976_hap1.fa
+    - data/sim_haps/NA18976_hap2.fa
+  NA18982:
+    - data/sim_haps/NA18982_hap1.fa
+    - data/sim_haps/NA18982_hap2.fa
+  NA18983:
+    - data/sim_haps/NA18983_hap1.fa
+    - data/sim_haps/NA18983_hap2.fa
+  NA19036:
+    - data/sim_haps/NA19036_hap1.fa
+    - data/sim_haps/NA19036_hap2.fa
+  NA19043:
+    - data/sim_haps/NA19043_hap1.fa
+    - data/sim_haps/NA19043_hap2.fa
+  NA19087:
+    - data/sim_haps/NA19087_hap1.fa
+    - data/sim_haps/NA19087_hap2.fa
+  NA19159:
+    - data/sim_haps/NA19159_hap1.fa
+    - data/sim_haps/NA19159_hap2.fa
+  NA19185:
+    - data/sim_haps/NA19185_hap1.fa
+    - data/sim_haps/NA19185_hap2.fa
+  NA19240:
+    - data/sim_haps/NA19240_hap1.fa
+    - data/sim_haps/NA19240_hap2.fa
+  NA19338:
+    - data/sim_haps/NA19338_hap1.fa
+    - data/sim_haps/NA19338_hap2.fa
+  NA19391:
+    - data/sim_haps/NA19391_hap1.fa
+    - data/sim_haps/NA19391_hap2.fa
+  NA19443:
+    - data/sim_haps/NA19443_hap1.fa
+    - data/sim_haps/NA19443_hap2.fa
+  NA19468:
+    - data/sim_haps/NA19468_hap1.fa
+    - data/sim_haps/NA19468_hap2.fa
+  NA19682:
+    - data/sim_haps/NA19682_hap1.fa
+    - data/sim_haps/NA19682_hap2.fa
+  NA19700:
+    - data/sim_haps/NA19700_hap1.fa
+    - data/sim_haps/NA19700_hap2.fa
+  NA19776:
+    - data/sim_haps/NA19776_hap1.fa
+    - data/sim_haps/NA19776_hap2.fa
+  NA19835:
+    - data/sim_haps/NA19835_hap1.fa
+    - data/sim_haps/NA19835_hap2.fa
+  NA19909:
+    - data/sim_haps/NA19909_hap1.fa
+    - data/sim_haps/NA19909_hap2.fa
+  NA20129:
+    - data/sim_haps/NA20129_hap1.fa
+    - data/sim_haps/NA20129_hap2.fa
+  NA20282:
+    - data/sim_haps/NA20282_hap1.fa
+    - data/sim_haps/NA20282_hap2.fa
+  NA20346:
+    - data/sim_haps/NA20346_hap1.fa
+    - data/sim_haps/NA20346_hap2.fa
+  NA20503:
+    - data/sim_haps/NA20503_hap1.fa
+    - data/sim_haps/NA20503_hap2.fa
+  NA20752:
+    - data/sim_haps/NA20752_hap1.fa
+    - data/sim_haps/NA20752_hap2.fa
+  NA20762:
+    - data/sim_haps/NA20762_hap1.fa
+    - data/sim_haps/NA20762_hap2.fa
+  NA20799:
+    - data/sim_haps/NA20799_hap1.fa
+    - data/sim_haps/NA20799_hap2.fa
+  NA20805:
+    - data/sim_haps/NA20805_hap1.fa
+    - data/sim_haps/NA20805_hap2.fa
+  NA20806:
+    - data/sim_haps/NA20806_hap1.fa
+    - data/sim_haps/NA20806_hap2.fa
+  NA20809:
+    - data/sim_haps/NA20809_hap1.fa
+    - data/sim_haps/NA20809_hap2.fa
+  NA20827:
+    - data/sim_haps/NA20827_hap1.fa
+    - data/sim_haps/NA20827_hap2.fa
+  NA20850:
+    - data/sim_haps/NA20850_hap1.fa
+    - data/sim_haps/NA20850_hap2.fa
+  NA20870:
+    - data/sim_haps/NA20870_hap1.fa
+    - data/sim_haps/NA20870_hap2.fa
+  NA20905:
+    - data/sim_haps/NA20905_hap1.fa
+    - data/sim_haps/NA20905_hap2.fa
+  NA21093:
+    - data/sim_haps/NA21093_hap1.fa
+    - data/sim_haps/NA21093_hap2.fa
+  NA21102:
+    - data/sim_haps/NA21102_hap1.fa
+    - data/sim_haps/NA21102_hap2.fa
+  NA21106:
+    - data/sim_haps/NA21106_hap1.fa
+    - data/sim_haps/NA21106_hap2.fa
+  NA21110:
+    - data/sim_haps/NA21110_hap1.fa
+    - data/sim_haps/NA21110_hap2.fa
+  NA21144:
+    - data/sim_haps/NA21144_hap1.fa
+    - data/sim_haps/NA21144_hap2.fa
+  NA21309:
+    - data/sim_haps/NA21309_hap1.fa
+    - data/sim_haps/NA21309_hap2.fa
+
+# Expected orange copy number (ploidy for cluster_whatshap). For benchmark
+# samples this is the painting-derived truth k; `ploidy` is the default used
+# for production datasets that have no sample_ploidy entry.
+ploidy: 6
+sample_ploidy:
+  HG00097: 5
+  HG00099: 6
+  HG00126: 7
+  HG00128: 4
+  HG00133: 6
+  HG00140: 6
+  HG00146: 8
+  HG002: 7
+  HG00232: 5
+  HG00235: 6
+  HG00253: 6
+  HG00272: 5
+  HG00280: 8
+  HG00290: 4
+  HG00320: 6
+  HG00321: 5
+  HG00323: 6
+  HG00329: 6
+  HG00344: 5
+  HG00350: 6
+  HG00408: 7
+  HG00423: 7
+  HG00438: 7
+  HG005: 7
+  HG00544: 7
+  HG00558: 7
+  HG00597: 9
+  HG00609: 6
+  HG00621: 8
+  HG00639: 5
+  HG00642: 6
+  HG00658: 8
+  HG00673: 5
+  HG00706: 6
+  HG00733: 6
+  HG00735: 6
+  HG00738: 6
+  HG00741: 4
+  HG01071: 5
+  HG01074: 5
+  HG01081: 6
+  HG01099: 5
+  HG01106: 5
+  HG01109: 5
+  HG01123: 5
+  HG01150: 5
+  HG01167: 4
+  HG01175: 5
+  HG01192: 6
+  HG01243: 7
+  HG01252: 7
+  HG01255: 6
+  HG01258: 6
+  HG01261: 5
+  HG01346: 6
+  HG01358: 8
+  HG01361: 7
+  HG01433: 5
+  HG01496: 7
+  HG01530: 5
+  HG01784: 7
+  HG01786: 6
+  HG01884: 4
+  HG01891: 6
+  HG01928: 7
+  HG01934: 5
+  HG01940: 5
+  HG01943: 6
+  HG01952: 6
+  HG01960: 5
+  HG01969: 7
+  HG01975: 4
+  HG01978: 6
+  HG01981: 6
+  HG01993: 7
+  HG02004: 8
+  HG02015: 8
+  HG02027: 7
+  HG02040: 7
+  HG02055: 6
+  HG02056: 7
+  HG02071: 6
+  HG02074: 7
+  HG02080: 7
+  HG02083: 8
+  HG02109: 5
+  HG02129: 8
+  HG02132: 8
+  HG02135: 7
+  HG02145: 6
+  HG02148: 7
+  HG02155: 7
+  HG02165: 7
+  HG02178: 7
+  HG02257: 5
+  HG02258: 6
+  HG02273: 6
+  HG02280: 7
+  HG02293: 5
+  HG02300: 6
+  HG02391: 8
+  HG02392: 8
+  HG02451: 5
+  HG02486: 5
+  HG02514: 6
+  HG02523: 6
+  HG02559: 6
+  HG02572: 6
+  HG02583: 5
+  HG02602: 8
+  HG02615: 7
+  HG02622: 7
+  HG02630: 5
+  HG02647: 6
+  HG02668: 5
+  HG02698: 5
+  HG02717: 7
+  HG02723: 5
+  HG02735: 5
+  HG02738: 5
+  HG02809: 6
+  HG02818: 8
+  HG02841: 6
+  HG02886: 4
+  HG02922: 6
+  HG02965: 4
+  HG02976: 2
+  HG02984: 4
+  HG03017: 4
+  HG03041: 7
+  HG03050: 7
+  HG03098: 4
+  HG03130: 6
+  HG03139: 5
+  HG03195: 7
+  HG03209: 6
+  HG03225: 6
+  HG03239: 7
+  HG03270: 6
+  HG03369: 7
+  HG03453: 4
+  HG03470: 3
+  HG03471: 5
+  HG03486: 6
+  HG03516: 5
+  HG03521: 5
+  HG03540: 6
+  HG03579: 5
+  HG03583: 4
+  HG03654: 7
+  HG03669: 5
+  HG03688: 4
+  HG03704: 6
+  HG03710: 6
+  HG03742: 6
+  HG03784: 5
+  HG03804: 4
+  HG03816: 5
+  HG03831: 4
+  HG03834: 6
+  HG03874: 7
+  HG03927: 8
+  HG03942: 6
+  HG04115: 6
+  HG04157: 6
+  HG04160: 7
+  HG04184: 7
+  HG04187: 7
+  HG04199: 5
+  HG04204: 6
+  HG04228: 6
+  HG06807: 8
+  NA18505: 4
+  NA18508: 6
+  NA18522: 6
+  NA18565: 7
+  NA18570: 6
+  NA18608: 5
+  NA18620: 5
+  NA18747: 9
+  NA18879: 5
+  NA18906: 7
+  NA18940: 6
+  NA18943: 6
+  NA18944: 6
+  NA18945: 6
+  NA18948: 9
+  NA18952: 6
+  NA18959: 4
+  NA18960: 6
+  NA18967: 7
+  NA18970: 7
+  NA18971: 7
+  NA18974: 5
+  NA18976: 7
+  NA18982: 7
+  NA18983: 7
+  NA19036: 5
+  NA19043: 4
+  NA19087: 8
+  NA19159: 4
+  NA19185: 4
+  NA19240: 6
+  NA19338: 5
+  NA19391: 9
+  NA19443: 7
+  NA19468: 5
+  NA19682: 7
+  NA19700: 5
+  NA19776: 7
+  NA19835: 6
+  NA19909: 7
+  NA20129: 6
+  NA20282: 5
+  NA20346: 5
+  NA20503: 5
+  NA20752: 5
+  NA20762: 7
+  NA20799: 7
+  NA20805: 5
+  NA20806: 9
+  NA20809: 5
+  NA20827: 6
+  NA20850: 5
+  NA20870: 6
+  NA20905: 4
+  NA21093: 5
+  NA21102: 5
+  NA21106: 5
+  NA21110: 6
+  NA21144: 5
+  NA21309: 7

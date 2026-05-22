@@ -24,25 +24,29 @@ rule resolve:
 
 
 rule align_reads_to_graph:
-    """Align the CLR reads to the pangenome graph, producing a GAF."""
+    """Align the CLR reads to the pangenome graph, producing a gzipped GAF."""
     input:
         reads=resolve_reads_fastq,
         gfa=GRAPH_GFA,
     output:
-        gaf=f"{WORK}/align/{{dataset}}.gaf",
+        gaf=f"{WORK}/align/{{dataset}}.gaf.gz",
     params:
         preset="vg",
     threads: 8
     resources:
-        mem_mb=32000,
+        mem_mb=8000,
         runtime=120,
     log:
         "logs/align_reads_to_graph/{dataset}.log",
     shell:
         r"""
         source config/tools.sh
-        "$GRAPHALIGNER" -g {input.gfa} -f {input.reads} -a {output.gaf} \
+        # GraphAligner has no gzip output: write the plain GAF, then compress.
+        gaf_gz="{output.gaf}"
+        plain="${{gaf_gz%.gz}}"
+        "$GRAPHALIGNER" -g {input.gfa} -f {input.reads} -a "$plain" \
             -x {params.preset} -t {threads} &> {log}
+        gzip -f "$plain"
         """
 
 
@@ -127,6 +131,8 @@ rule cluster_copies:
         matrix=rules.build_marker_matrix.output.matrix,
     output:
         pred=f"{WORK}/untangle/{{dataset}}/pred.tsv",
+    params:
+        ploidy=lambda w: dataset_ploidy(w.dataset),
     log:
         "logs/cluster_copies/{dataset}.log",
     shell:
@@ -134,7 +140,7 @@ rule cluster_copies:
         source config/tools.sh
         source config/params.sh
         "$WHATSHAP_PYTHON" {input.script} --matrix {input.matrix} \
-            --out {output.pred} --collapse --ploidy "$PLOIDY" \
+            --out {output.pred} --collapse --ploidy {params.ploidy} \
             --err "$WHATSHAP_ERR" &> {log}
         """
 
@@ -179,8 +185,19 @@ rule flye_assemble_pool:
         # Flye locates its bundled flye-minimap2 / flye-samtools on PATH;
         # add its env bin dir so calling the binary by absolute path works.
         export PATH="$(dirname "$FLYE"):$PATH"
-        "$FLYE" --pacbio-raw {input.pool} --out-dir {params.outdir} \
-            --threads {threads} &> {log}
+        # A pool too thin to assemble (Flye: "No disjointigs were assembled")
+        # is not a fatal error -- it means the cluster held too few reads to
+        # be a real copy. Emit an empty assembly so collect_copies records it
+        # as a 0-contig pool instead of aborting the whole run.
+        if "$FLYE" --pacbio-raw {input.pool} --out-dir {params.outdir} \
+                --threads {threads} &> {log}; then
+            :
+        else
+            echo "[WARN] Flye failed on {wildcards.dataset}/{wildcards.pool} --"\
+                 "emitting empty assembly" >> {log}
+            mkdir -p {params.outdir}
+            : > {output.asm}
+        fi
         """
 
 

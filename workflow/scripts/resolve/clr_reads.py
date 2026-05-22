@@ -19,10 +19,16 @@ read id (one molecule per read); source_hap is the h1/h2 truth tag.
 """
 
 import argparse
+import gzip
 import re
 import sys
 
 _STEP = re.compile(r"\d+")
+
+
+def open_text(path):
+    """Open a text file, transparently decompressing a .gz by extension."""
+    return gzip.open(path, "rt") if path.endswith(".gz") else open(path)
 
 
 def load_color(path, target):
@@ -52,7 +58,7 @@ def main():
     # best alignment per read = longest alignment block (GAF col 11, idx 10)
     best = {}
     n_aln = 0
-    with open(args.gaf) as fh:
+    with open_text(args.gaf) as fh:
         for line in fh:
             f = line.rstrip("\n").split("\t")
             if len(f) < 11:

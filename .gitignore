@@ -6,3 +6,7 @@ __pycache__/
 
 # the user-supplied pangenome graph (too large to commit)
 data/*.gfa
+
+# per-sample haplotype FASTAs for read simulation, re-extractable from the
+# graph (~245 MB); not versioned, same rationale as the graph above
+data/sim_haps/

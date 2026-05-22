@@ -41,6 +41,9 @@ SAMPLE_HAPS = dict(config.get("sample_haps", {}))
 USER_DATASETS = dict(config.get("datasets", {}))
 DATASETS = sorted(set(USER_DATASETS) | {SIM_PREFIX + s for s in SAMPLES})
 
+SAMPLE_PLOIDY = {s: int(k) for s, k in config.get("sample_ploidy", {}).items()}
+DEFAULT_PLOIDY = int(config.get("ploidy", 6))
+
 sys.stderr.write(
     f"[INFO] common: {len(DATASETS)} dataset(s) {DATASETS} · "
     f"{len(SAMPLES)} benchmark sample(s) {SAMPLES}\n")
@@ -67,6 +70,15 @@ def resolve_reads_fastq(wildcards):
             f"dataset '{wildcards.dataset}' is not a sim_* dataset and is not "
             f"declared in config datasets:; known = {sorted(USER_DATASETS)}")
     return USER_DATASETS[wildcards.dataset]
+
+
+def dataset_ploidy(dataset):
+    """Expected orange copy number (cluster_whatshap ploidy) for a {dataset}:
+    the benchmark sample's painting-truth k where known, else the default."""
+    s = sim_sample(dataset)
+    if s is not None and s in SAMPLE_PLOIDY:
+        return SAMPLE_PLOIDY[s]
+    return DEFAULT_PLOIDY
 
 
 def sample_hap_fa(sample, hap):
